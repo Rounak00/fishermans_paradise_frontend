@@ -13,7 +13,7 @@ const schema = z.object({
   email: z.string().min(1, { message: "Please Enter your Email" }),
   password: z.string().min(1, { message: "Please Enter your password" }),
   contact: z.string().min(1, { message: "Please Enter your Contact number" }),
-  liscence: z.any()
+  image: z.any()
 });
 
 // const FormFields=z.infer<typeof schema>//only tsx
@@ -105,12 +105,12 @@ const FishermanRegister = () => {
           )}
 
         <Input
-            {...register("liscence")}
+            {...register("image")}
             type="file"
             placeholder="Upload Liscence"
           />
-          {errors.liscence && (
-            <div className="text-red-500">{errors.liscence.message}</div>
+          {errors.image && (
+            <div className="text-red-500">{errors.image.message}</div>
           )}
 
           <Button className="w-full" disabled={isSubmitting} type="submit">

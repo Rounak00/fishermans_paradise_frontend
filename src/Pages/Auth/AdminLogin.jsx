@@ -32,13 +32,13 @@ const AdminLogin = () => {
 
      
       const res = await axios.post(
-        `http://localhost:5000/api/auth/fisherman/login`,
+        `http://localhost:5000/api/auth/admin/login`,
         data
       );
       if(res.data){
          localStorage.setItem("user",JSON.stringify(res.data.user));
       }
-      console.log(res);
+      
       navigate("/admin");
     } catch (error) {
       console.log(error);
