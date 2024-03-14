@@ -1,5 +1,3 @@
-
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "../../components/ui/button";
@@ -7,18 +5,18 @@ import { z } from "zod";
 import { Input } from "../../components/ui/input";
 import axios from "axios";
 import { useToast } from "../../components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   name: z.string().min(1, { message: "Please Enter your Full Name" }),
   email: z.string().min(1, { message: "Please Enter your Email" }),
   password: z.string().min(1, { message: "Please Enter your password" }),
   contact: z.string().min(1, { message: "Please Enter your Contact number" }),
-  liscence: z.any()
+  image: z.any(),
 });
 
-// const FormFields=z.infer<typeof schema>//only tsx
-
 const FishermanRegister = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const {
     register,
@@ -32,19 +30,27 @@ const FishermanRegister = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const convertedData = {
-        ...data,
-        contact: parseInt(data.contact),
-      };
-      
-      const res = await axios.post(
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("password", data.password);
+      formData.append("contact", data.contact);
+      formData.append("image", data.image[0]);
+
+      await axios.post(
         `http://localhost:5000/api/auth/fisherman/register`,
-        convertedData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-      console.log(res);
+
       toast({
         description: "User registered, Please Log In",
       });
+      navigate("/fisherman-login");
     } catch (error) {
       console.log(error);
       toast({
@@ -53,20 +59,6 @@ const FishermanRegister = () => {
       });
     }
   };
-
-  // useEffect(() => {
-  // 	const fetchData = async () => {
-  // 		setLoading(true);
-  // 		try {
-  // 			const res = await axios.get(`${process.env.REACT_APP_BASE_URL}` + url);
-  // 			setData(res.data);
-  // 		} catch (err) {
-  // 			setError(err);
-  // 		}
-  // 		setLoading(false);
-  // 	};
-  // 	fetchData();
-  // }, [url]);
 
   return (
     <div className="flex items-center justify-center">
@@ -104,14 +96,17 @@ const FishermanRegister = () => {
             <div className="text-red-500">{errors.contact.message}</div>
           )}
 
-        <Input
-            {...register("liscence")}
+          <Input
+            {...register("image", {
+              required: "Lisence picture is required",
+            })}
             type="file"
             placeholder="Upload Liscence"
           />
-          {errors.liscence && (
-            <div className="text-red-500">{errors.liscence.message}</div>
-          )}
+
+          {/* {errors.image && (
+            <div className="text-red-500">{errors.image.message}</div>
+          )} */}
 
           <Button className="w-full" disabled={isSubmitting} type="submit">
             {isSubmitting ? "Loading..." : "Submit"}
