@@ -6,6 +6,7 @@ import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
 import axios from "axios";
 import { useToast } from "../../components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   email: z.string().min(1, { message: "Please Enter your Email" }),
@@ -18,6 +19,7 @@ const schema = z.object({
 // const FormFields=z.infer<typeof schema>//only tsx
 
 const CustomerRegister = () => {
+  const navigate=useNavigate();
   const { toast } = useToast();
   const {
     register,
@@ -35,14 +37,15 @@ const CustomerRegister = () => {
         ...data,
         contact: parseInt(data.contact),
       };
-      const res = await axios.post(
+       await axios.post(
         `http://localhost:5000/api/auth/customer/register`,
         convertedData
       );
-      console.log(res);
+      
       toast({
         description: "User registered, Please Log In",
       });
+      navigate("/login");
     } catch (error) {
       console.log(error);
       toast({
