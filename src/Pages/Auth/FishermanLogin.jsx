@@ -5,7 +5,7 @@ import { z } from "zod";
 import { Input } from "../../components/ui/input";
 import axios from "axios";
 import { useToast } from "../../components/ui/use-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const schema = z.object({
   email: z.string().min(1, { message: "Please Enter your Email" }),
@@ -98,6 +98,7 @@ const FishermanLogin = () => {
             <div className="text-red-500">{errors.root.message}</div>
           )}
         </form>
+        <h1 className="mt-4"> Don't have an Account, <Link className='text-primary font-semibold' to="/fisherman-register">Click Here</Link></h1>
       </div>
     </div>
   );

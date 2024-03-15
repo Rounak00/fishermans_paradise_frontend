@@ -9,6 +9,7 @@ import FishermanRegister from "./Pages/Auth/FishermanRegister"
 import AdminLogin from "./Pages/Auth/AdminLogin"
 import FishermanPage from "./Pages/Special/FishermanPage"
 import AdminPage from "./Pages/Special/AdminPage"
+import RequireLogin from "./Pages/Auth/RequireLogin"
 
 const App = () => {
   
@@ -19,7 +20,7 @@ const App = () => {
             <Route path="/" element={<Home/>}/>
             <Route path="/register" element={<CustomerRegister/>}/>
             <Route path="/login" element={<CustomerLogin/>}/>
-
+            <Route path="/require" element={<RequireLogin/>}></Route>
             <Route path="/fisherman-register" element={<FishermanRegister/>}/>
             <Route path="/fisherman-login" element={<FishermanLogin/>}/>
             
