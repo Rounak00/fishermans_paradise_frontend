@@ -42,7 +42,7 @@ const { dispatch } = useContext(AuthContext);
       );
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       
-      navigate("/admin");
+      navigate("/adminpage");
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE", payload: error.response.data });
       console.log(error);
@@ -71,7 +71,7 @@ const { dispatch } = useContext(AuthContext);
   return (
     <div className="flex items-center justify-center">
       <div className="h-max flex flex-col md:w-1/2 p-4 justify-center items-center ">
-        <h1 className="mt-10">Fisherman Login Form</h1>
+        <h1 className="mt-10">Admin Login</h1>
         <form
           className="container flex flex-col justify-center items-center mt-10 gap-4"
           onSubmit={handleSubmit(onSubmit)}

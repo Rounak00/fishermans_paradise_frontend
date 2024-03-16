@@ -7,8 +7,8 @@ import CustomerLogin from "./Pages/Auth/CustomerLogin"
 import FishermanLogin from "./Pages/Auth/FishermanLogin"
 import FishermanRegister from "./Pages/Auth/FishermanRegister"
 import AdminLogin from "./Pages/Auth/AdminLogin"
-import FishermanPage from "./Pages/Special/FishermanPage"
-import AdminPage from "./Pages/Special/AdminPage"
+import FishermanPage from "./Pages/Fisherman/FishermanPage"
+import AdminPage from "./Pages/Admin/AdminPage"
 import RequireLogin from "./Pages/Auth/RequireLogin"
 import ProductFeed from "./Pages/User/ProductFeed"
 import Contact from "./Pages/User/Contact"
@@ -31,7 +31,8 @@ const App = () => {
        
             <Route path="/fisherman" element={<FishermanPage/>}/>
             <Route path="/admin-login" element={<AdminLogin/>}/>
-            <Route path="/admin" element={<AdminPage/>}/>
+            <Route path="/adminpage" element={<AdminPage/>}/>
+            
 
 
              <Route path="/product" element={<ProductFeed/>}/>

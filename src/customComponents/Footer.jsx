@@ -7,7 +7,7 @@ const Footer = () => {
      
  
     <section className="relative overflow-hidden bg-white ">
-      <div className=" container relative z-10 mx-auto ">
+      <div className=" container relative z-10  ">
         <div className=" flex flex-wrap items-center justify-between">
           <div className="w-auto p-8">
             <Link href="/">
@@ -17,7 +17,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="w-auto p-8">
-            <ul className="-m-5 flex flex-wrap items-center">
+            <ul className="-mt-5 flex flex-wrap items-center">
               <li className="p-5">
                 <Link className="font-medium text-gray-600 hover:text-gray-700" to="/">
                   Home
@@ -101,7 +101,7 @@ const Footer = () => {
         </div>
       </div>
     </section>
-  
+   
 
 
     </>

@@ -86,7 +86,7 @@ const Contact = () => {
                                     />
                                 </svg>
                                 <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                                    sunandasadhukhan@gmail.com
+                                    fishemans_paradise@gmail.org.com
                                 </div>
                             </div>
                         </div>
