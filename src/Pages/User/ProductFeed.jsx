@@ -1,7 +1,11 @@
+import { NavBar } from "@/customComponents/NavBar"
 
 const ProductFeed = () => {
   return (
-    <div>ProductFeed</div>
+    <div>
+       <NavBar/>
+      <div>ProductFeed</div>
+    </div>
   )
 }
 

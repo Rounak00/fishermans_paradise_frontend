@@ -6,6 +6,9 @@ import { Input } from "../../components/ui/input";
 import axios from "axios";
 import { useToast } from "../../components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
+
 
 const schema = z.object({
   email: z.string().min(1, { message: "Please Enter your Email" }),
@@ -16,6 +19,8 @@ const schema = z.object({
 // const FormFields=z.infer<typeof schema>//only tsx
 
 const AdminLogin = () => {
+  
+const { dispatch } = useContext(AuthContext);
   const navigate=useNavigate();
   const { toast } = useToast();
   const {
@@ -27,20 +32,19 @@ const AdminLogin = () => {
   });
 
   const onSubmit = async (data) => {
+    dispatch({ type: "LOGIN_START" });
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-
-     
+      
       const res = await axios.post(
         `http://localhost:5000/api/auth/admin/login`,
         data
       );
-      if(res.data){
-         localStorage.setItem("user",JSON.stringify(res.data.user));
-      }
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       
       navigate("/admin");
     } catch (error) {
+      dispatch({ type: "LOGIN_FAILURE", payload: error.response.data });
       console.log(error);
       toast({
         variant: "destructive",
@@ -62,6 +66,7 @@ const AdminLogin = () => {
   // 	};
   // 	fetchData();
   // }, [url]);
+
 
   return (
     <div className="flex items-center justify-center">

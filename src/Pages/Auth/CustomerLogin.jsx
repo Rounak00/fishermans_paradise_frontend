@@ -5,18 +5,20 @@ import { z } from "zod";
 import { Input } from "../../components/ui/input";
 import axios from "axios";
 import { useToast } from "../../components/ui/use-toast";
-import {  Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 const schema = z.object({
   email: z.string().min(1, { message: "Please Enter your Email" }),
   password: z.string().min(1, { message: "Please Enter your Email" }),
- 
 });
 
 // const FormFields=z.infer<typeof schema>//only tsx
 
 const CustomerLogin = () => {
-  const navigate=useNavigate();
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { toast } = useToast();
   const {
     register,
@@ -27,18 +29,17 @@ const CustomerLogin = () => {
   });
 
   const onSubmit = async (data) => {
+    dispatch({ type: "LOGIN_START" });
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const res = await axios.post(
         `http://localhost:5000/api/auth/customer/login`,
         data
       );
-      if(res.data){ 
-      localStorage.setItem("user",JSON.stringify(res.data.user));}
-      
-      
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate("/");
     } catch (error) {
+      dispatch({ type: "LOGIN_FAILURE", payload: error.response.data });
       console.log(error);
       toast({
         variant: "destructive",
@@ -69,8 +70,6 @@ const CustomerLogin = () => {
           className="container flex flex-col justify-center items-center mt-10 gap-4"
           onSubmit={handleSubmit(onSubmit)}
         >
-          
-
           <Input {...register("email")} type="text" placeholder="Email" />
           {errors.email && (
             <div className="text-red-500">{errors.email.message}</div>
@@ -85,8 +84,6 @@ const CustomerLogin = () => {
             <div className="text-red-500">{errors.password.message}</div>
           )}
 
-         
-
           <Button className="w-full" disabled={isSubmitting} type="submit">
             {isSubmitting ? "Loading..." : "Login"}
           </Button>
@@ -95,7 +92,13 @@ const CustomerLogin = () => {
             <div className="text-red-500">{errors.root.message}</div>
           )}
         </form>
-        <h1 className="mt-4"> Don't have an Account, <Link className='text-primary font-semibold' to="/register">Click Here</Link></h1>
+        <h1 className="mt-4">
+          {" "}
+          Don't have an Account,{" "}
+          <Link className="text-primary font-semibold" to="/register">
+            Click Here
+          </Link>
+        </h1>
       </div>
     </div>
   );

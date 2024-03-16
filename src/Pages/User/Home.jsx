@@ -1,8 +1,13 @@
+import { NavBar } from "@/customComponents/NavBar"
 
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <NavBar/>
+       <div>Home</div>
+    </>
+    
   )
 }
 

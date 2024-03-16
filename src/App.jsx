@@ -10,6 +10,10 @@ import AdminLogin from "./Pages/Auth/AdminLogin"
 import FishermanPage from "./Pages/Special/FishermanPage"
 import AdminPage from "./Pages/Special/AdminPage"
 import RequireLogin from "./Pages/Auth/RequireLogin"
+import ProductFeed from "./Pages/User/ProductFeed"
+import Contact from "./Pages/User/Contact"
+import About from "./Pages/User/About"
+import Cart from "./Pages/User/Cart"
 
 const App = () => {
   
@@ -24,11 +28,16 @@ const App = () => {
             <Route path="/fisherman-register" element={<FishermanRegister/>}/>
             <Route path="/fisherman-login" element={<FishermanLogin/>}/>
             
-
+       
             <Route path="/fisherman" element={<FishermanPage/>}/>
             <Route path="/admin-login" element={<AdminLogin/>}/>
             <Route path="/admin" element={<AdminPage/>}/>
 
+
+             <Route path="/product" element={<ProductFeed/>}/>
+             <Route path="/about" element={<About/>}/>
+             <Route path="/contact" element={<Contact/>}/>
+             <Route path="/cart" element={<Cart/>}/>
             <Route path="*" element={<ErrorPage/>}/>
 
          </Routes>

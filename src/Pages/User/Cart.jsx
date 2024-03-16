@@ -1,8 +1,11 @@
+import { NavBar } from "@/customComponents/NavBar"
 
 
 const Cart = () => {
-  return (
+  return (<>
+    <NavBar/>
     <div>Cart</div>
+    </>
   )
 }
 
