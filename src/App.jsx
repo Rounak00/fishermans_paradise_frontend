@@ -14,6 +14,10 @@ import ProductFeed from "./Pages/User/ProductFeed"
 import Contact from "./Pages/User/Contact"
 import About from "./Pages/User/About"
 import Cart from "./Pages/User/Cart"
+import AdminRoute from "./private/AdminRoute"
+import FishermanRoute from "./private/FishermanRoute"
+import CustomerRoute from "./private/CustomerRoute"
+
 
 const App = () => {
   
@@ -24,21 +28,19 @@ const App = () => {
             <Route path="/" element={<Home/>}/>
             <Route path="/register" element={<CustomerRegister/>}/>
             <Route path="/login" element={<CustomerLogin/>}/>
-            <Route path="/require" element={<RequireLogin/>}></Route>
+            <Route path="/require" element={<RequireLogin/>}/>
             <Route path="/fisherman-register" element={<FishermanRegister/>}/>
             <Route path="/fisherman-login" element={<FishermanLogin/>}/>
-            
-       
-            <Route path="/fisherman" element={<FishermanPage/>}/>
+            <Route path="/fisherman" element={<FishermanRoute><FishermanPage/></FishermanRoute>}/>
             <Route path="/admin-login" element={<AdminLogin/>}/>
-            <Route path="/adminpage" element={<AdminPage/>}/>
+            <Route path="/adminpage"  element={<AdminRoute><AdminPage/></AdminRoute>} />
             
 
 
-             <Route path="/product" element={<ProductFeed/>}/>
+             <Route path="/product/:productId" element={<ProductFeed/>}/>
              <Route path="/about" element={<About/>}/>
              <Route path="/contact" element={<Contact/>}/>
-             <Route path="/cart" element={<Cart/>}/>
+             <Route path="/cart" element={<CustomerRoute><Cart/></CustomerRoute>}/>
             <Route path="*" element={<ErrorPage/>}/>
 
          </Routes>

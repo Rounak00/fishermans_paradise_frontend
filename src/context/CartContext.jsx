@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 	loading: false
 };
 
-export const Cart = createContext();
+export const Cart = createContext(INITIAL_STATE);
 
 const cartReducer = (state, action) => {
 	switch (action.type) {
@@ -37,7 +37,7 @@ const cartReducer = (state, action) => {
 };
 
 const CartContext = ({ children }) => {
-	const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
+	const [state, dispatch] = useReducer(cartReducer,INITIAL_STATE);
 	
 	return (
 		<Cart.Provider

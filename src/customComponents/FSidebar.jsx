@@ -8,10 +8,14 @@ import {
   import { Link } from "react-router-dom";
   import { AuthContext } from "@/context/AuthContext";
   import { useContext } from "react";
+import { Button } from "@/components/ui/button";
   
   const FSidebar = () => {
     const { user } = useContext(AuthContext);
-  
+    const Logout=()=>{
+      localStorage.removeItem("user")
+      location.reload()
+    }
     return (
       <div>
         <aside className="flex h-screen w-64 flex-col overflow-y-auto border-r bg-white px-5 py-8">
@@ -34,6 +38,7 @@ import {
               </div>
             </nav>
           </div>
+          <Button className='bg-orange-700' onClick={Logout}>Log out</Button>
           <Link href="/">
             <img src={LOGO} alt="Logo" />
           </Link>

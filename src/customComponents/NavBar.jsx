@@ -14,8 +14,8 @@ const menuItems = [
     href: "/",
   },
   {
-    name: "Product",
-    href: "/product",
+    name: "Cart",
+    href: "/cart",
   },
   {
     name: "About",
@@ -48,7 +48,7 @@ export function NavBar() {
   };
   
   const { user } = useContext(AuthContext);
-  console.log(user);
+  
   const Logout=()=>{
     localStorage.removeItem("user")
     location.reload()

@@ -8,10 +8,17 @@ import {
   import { Link } from "react-router-dom";
   import { AuthContext } from "@/context/AuthContext";
   import { useContext } from "react";
+import { Button } from "@/components/ui/button";
   
   const ASidebar = () => {
-    const { user } = useContext(AuthContext);
   
+
+
+    const { user } = useContext(AuthContext);
+    const Logout=()=>{
+      localStorage.removeItem("user")
+      location.reload()
+    }
     return (
       <div>
         <aside className="flex h-screen w-64 flex-col overflow-y-auto border-r bg-white px-5 py-8">
@@ -23,14 +30,7 @@ import {
                 <label className="px-3 text-xs font-semibold uppercase text-gray-900">
                   analytics
                 </label>
-                <Link to="/adminpage"
-                  className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700"
-                  href="#"
-                >
-                  <BarChart className="h-5 w-5" aria-hidden="true" />
-                  <span className="mx-2 text-sm font-medium">Dashboard</span>
-                </Link>
-                <Link to="/adminpage"
+                  <Link to="/adminpage"
                   className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700"
                   href="#"
                 >
@@ -40,6 +40,7 @@ import {
               </div>
             </nav>
           </div>
+          <Button className='bg-orange-700' onClick={Logout}>Log out</Button>
           <Link href="/">
             <img src={LOGO} alt="Logo" />
           </Link>

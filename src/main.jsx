@@ -1,17 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
-import { Toaster } from './components/ui/toaster.jsx'
-import {  AuthContextProvider } from './context/AuthContext'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+import { Toaster } from "./components/ui/toaster.jsx";
+import { AuthContextProvider } from "./context/AuthContext";
+import CartContext, { Cart } from "./context/CartContext";
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    
-    <AuthContextProvider>
-    <Toaster />
-      <App/>
-   </AuthContextProvider>
+    <CartContext>
+      <AuthContextProvider>
+        <Toaster />
+        <App />
+      </AuthContextProvider>
+    </CartContext>
   </React.StrictMode>
-)
+);

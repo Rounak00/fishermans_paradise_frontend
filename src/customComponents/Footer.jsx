@@ -23,11 +23,7 @@ const Footer = () => {
                   Home
                 </Link>
               </li>
-              <li className="p-5">
-                <Link className="font-medium text-gray-600 hover:text-gray-700" to="/product">
-                  Product
-                </Link>
-              </li>
+              
               <li className="p-5">
                 <Link className="font-medium text-gray-600 hover:text-gray-700" to="/about">
                   About
