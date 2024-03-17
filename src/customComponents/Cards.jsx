@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import CartContext, { Cart } from "@/context/CartContext";
+import  { Cart } from "@/context/CartContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
@@ -15,8 +15,10 @@ export function Cards({
   price,
 }) {
   const { toast } = useToast();
-  const cart = useContext(CartContext);
-  console.log(cart);
+ 
+  
+
+   
   const buyFunc = () => {
     toast({
       description: "Please Check your Email for payment and delivery schedule",
@@ -41,6 +43,7 @@ export function Cards({
         <Button
           type="button"
           className="mt-4 mr-4 rounded-sm bg-primary px-2.5 py-1 text-[12px] font-semibold text-white shadow-sm "
+          
         >
           Add to Cart
         </Button>

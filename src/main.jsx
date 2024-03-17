@@ -4,7 +4,8 @@ import App from "./App";
 import "./index.css";
 import { Toaster } from "./components/ui/toaster.jsx";
 import { AuthContextProvider } from "./context/AuthContext";
-import CartContext, { Cart } from "./context/CartContext";
+
+import CartContext from "./context/CartContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
