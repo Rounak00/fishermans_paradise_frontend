@@ -7,7 +7,7 @@ import { Input } from "../../components/ui/input";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "@/context/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -26,6 +26,7 @@ const schema = z.object({
 
 
 const FishermanPage = () => {
+  const [isApproved,setIsApproved]=useState(false)
   const { user } = useContext(AuthContext);
   
   const { toast } = useToast();
@@ -36,7 +37,18 @@ const FishermanPage = () => {
   } = useForm({
     resolver: zodResolver(schema),
   })
+  
+  useEffect(()=>{
+    ISApproved();
+  })
 
+   const ISApproved=async()=>{
+     const prof=await axios.get("http://localhost:5000/api/fisherman/profile",
+     {headers:{Authorization: "Bearer "+ `${user.accessToken}`}
+    })
+    console.log(prof)
+    setIsApproved(prof.data.approve)
+  }
 
   const onSubmit = async (data) => {
     try {
@@ -98,7 +110,9 @@ const FishermanPage = () => {
 
   return (
     <>
-      <div className="flex flex-row gap-10">
+       
+       { isApproved? (
+        <div className="flex flex-row gap-10">
         <FSidebar />
         <div className="flex items-center w-full justify-center">
           <div className="h-max flex flex-col  p-4 justify-center items-center ">
@@ -189,7 +203,14 @@ const FishermanPage = () => {
             
           </div>
         </div>
-      </div>
+      </div>):(
+        <div className='w-[100vw] h-[100vh]  flex gap-5 justify-center items-center flex-col'>
+          <h1 className="font-bold">Sorry You are Not Approved</h1>
+          <Link to="/require"><Button className='bg-orange-700 hover:bg-orange-500' >Go Back</Button></Link>
+        </div>
+      )}
+      
+      
     </>
   );
 };

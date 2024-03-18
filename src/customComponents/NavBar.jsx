@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { AuthContext } from "@/context/AuthContext";
 import { useContext } from "react";
+import AVATAR from "../assets/avatar.svg"
 
 const menuItems = [
   {
@@ -85,8 +86,12 @@ export function NavBar() {
           {user.role === "customer" && user.accessToken ? (
             <div className="flex flex-row gap-6">
               <div className="flex flex-col">
-                 <div>Hello,</div>
-                 <div className='font-bold'>{user.name}</div>
+                 <div className="text-center">Hello,</div>
+                 <div className='font-bold flex flex-row gap-1'>
+                  <span>
+                    <img src={AVATAR} alt="AVATAR" className="h-7 w-7" />
+                  </span>
+                  {user.name}</div>
               </div> 
               <Button className='bg-orange-700' onClick={Logout}>Log out</Button>
             </div>
