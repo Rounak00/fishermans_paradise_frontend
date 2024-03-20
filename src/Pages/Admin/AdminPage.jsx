@@ -1,73 +1,47 @@
-import { AuthContext } from "@/context/AuthContext";
-import ASidebar from "@/customComponents/ASidebar";
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import ContentCard from "./ContentCard";
+
+import ASidebar from "@/customComponents/ASidebar"
 
 const AdminPage = () => {
-  const { user } = useContext(AuthContext);
-  const [elements, setElements] = useState([]);
-  const [isApprove,setIsApprove]=useState(false);
-  useEffect(() => {
-    CallerUser();
-  }, [isApprove]);
 
-  async function CallerUser() {
-    try {
-      setIsApprove(false);
-      let res = await axios.get(
-        "http://localhost:5000/api/admin/notApprovedFishermansList",
-        { headers: { Authorization: "Bearer " + `${user.accessToken}`} }
-      );
-      setElements(res.data);
-      console.log(elements)
-    } catch (err) {
-      console.log(err);
-    }
-  }
+ 
 
+  return (
+    <div className="w-full flex flex-row gap-3">
+        <ASidebar/>
+        
+         <div className="w-full flex  gap-10 flex-col justify-center items-center">
+            <div className="mt-10 flex flex-row gap-10">
+               <div className="h-[10rem] w-[16rem] bg-orange-500 shadow-2xl rounded-lg flex justify-center flex-col items-center">
+                  <p className="text-white font-bold">Number Of Users</p>
+                  <p className="text-white font-bold text-2xl">45</p>
+               </div>
+               <div className="h-[10rem] w-[16rem] bg-orange-500 shadow-2xl rounded-lg flex justify-center flex-col items-center">
+                  <p className="text-white font-bold">Number Of Fishermans</p>
+                  <p className="text-white font-bold text-2xl">15</p>
+               </div>
+               <div className="h-[10rem] w-[16rem] bg-orange-500 shadow-2xl rounded-lg flex justify-center flex-col items-center">
+                  <p className="text-white font-bold">Orders in this weak</p>
+                  <p className="text-white font-bold text-2xl">248</p>
+               </div>
+            </div>
+            <div className="gap-5 flex flex-row">
 
-   if(elements.length==0){
-      return (
-        <div className="flex flex-row gap-10">
-        <ASidebar />
+                 <div className="h-[12rem] w-[16rem] text-white bg-orange-700 shadow-2xl rounded-lg flex justify-center flex-col items-center">
+                    <p className='font-semibold text-xl'>Approved Fisherman </p>
+                    <p className='font-semibold text-2xl'>10 </p>
+                  </div>
+                  <div className="h-[12rem] w-[16rem] text-white bg-orange-700 shadow-2xl rounded-lg flex justify-center flex-col items-center">
+                    <p className='font-semibold text-xl'>Not Approved Fisherman </p>
+                    <p className='font-semibold text-2xl'>5 </p> 
+                  </div>
 
-        <div className="mt-10">
-          <div className=" flex flex-col gap-3"></div>
-             <div className="flex gap-5 justify-center items-center flex-col">
-               <h1>No More Applicants</h1>
-             </div>   
-        </div>
-      </div>
-      )
-   }else{
-      return (
-      <>
-        <div className="flex flex-row gap-10">
-          <ASidebar />
-  
-          <div className="mt-10">
-            <div className=" flex flex-col gap-3"></div>
-               
-               {elements.length>0&&elements.map((item,index)=>(
-                 <ContentCard 
-                   key={index}
-                   license={item.license}
-                   name={item.name}
-                   email={item.email}
-                   fid={item._id}
-                   setIsApprove={setIsApprove}
-                 />
-               )     
-               )}
-               
-          </div>
-        </div>
-      </>
-      );
-   }
+            </div>
+         </div>
+        
+       
+        
+    </div>
+  )
+}
 
-  
-};
-
-export default AdminPage;
+export default AdminPage

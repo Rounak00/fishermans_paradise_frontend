@@ -40,7 +40,7 @@ const FishermanLogin = () => {
       
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
       
-      navigate("/fisherman");
+      navigate("/fishermanadd");
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE", payload: error.response.data })
       console.log(error);

@@ -25,7 +25,7 @@ const schema = z.object({
 
 
 
-const FishermanPage = () => {
+const FishermanAdd = () => {
   const [isApproved,setIsApproved]=useState(false)
   const { user } = useContext(AuthContext);
   
@@ -98,15 +98,6 @@ const FishermanPage = () => {
       });
     }
   }
-
-
-
-
-
-
-
-
-
 
   return (
     <>
@@ -215,4 +206,4 @@ const FishermanPage = () => {
   );
 };
 
-export default FishermanPage;
+export default FishermanAdd;

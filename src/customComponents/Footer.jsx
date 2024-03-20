@@ -5,11 +5,11 @@ const Footer = () => {
   return (
     <>
      
- 
+    <div className="flex flex-col">
     <section className="relative overflow-hidden bg-white ">
       <div className=" container relative z-10  ">
         <div className=" flex flex-wrap items-center justify-between">
-          <div className="w-auto p-8">
+          <div className="w-auto p-3">
             <Link href="/">
               <div className="inline-flex items-center">
                    <img src={LOGO} alt="" />
@@ -97,6 +97,10 @@ const Footer = () => {
         </div>
       </div>
     </section>
+      <div className="w-full flex justify-center items-center">
+          © 2024 Fisherman's Paradise
+      </div>
+    </div>
    
 
 

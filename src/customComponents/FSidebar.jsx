@@ -1,6 +1,7 @@
 
 import {
   FilePlus ,
+    FileX,
     Fish
   } from "lucide-react";
   
@@ -17,7 +18,7 @@ import { Button } from "@/components/ui/button";
       location.reload()
     }
     return (
-      <div>
+      <div className='fixed'>
         <aside className="flex h-screen w-64 flex-col overflow-y-auto border-r bg-white px-5 py-8">
         <div>Hello Fisherman, <span className='text-orange-700 font-semibold'>{user.name}</span> </div>
         
@@ -27,12 +28,20 @@ import { Button } from "@/components/ui/button";
               <div className="space-y-3 ">
               
                 
-                <Link to="/fisherman"
+                <Link to="/fishermanadd"
                   className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700"
                   href="#"
                 >
-                  <FilePlus className="h-5 w-5" aria-hidden="true" />
-                  <span className="mx-2 text-sm font-medium">Add Product</span>
+                <FilePlus className="h-5 w-5" aria-hidden="true" />
+                <span className="mx-2 text-sm font-medium">Add Product</span>
+                </Link>
+
+                <Link to="/fishermanremove"
+                  className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700"
+                  href="#"
+                >
+                <FileX className="h-5 w-5" aria-hidden="true" />
+                <span className="mx-2 text-sm font-medium">Remove Product</span>
                 </Link>
                 
               </div>

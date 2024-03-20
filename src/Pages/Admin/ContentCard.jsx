@@ -3,13 +3,13 @@ import { AuthContext } from "@/context/AuthContext";
 import axios from "axios";
 import { useContext } from "react";
 
-const ContentCard = ({ license, name, fid, email , setIsApprove}) => {
+const ContentCard = ({ license, name, fid, email , url, action,setIsApprove}) => {
   const { user } = useContext(AuthContext);
   console.log(user)
   async function GiveApprove () { 
     console.log("hello "+ fid)
     try {
-      await axios.put(`http://localhost:5000/api/admin/markApproved/${fid}`,{},{
+      await axios.put(`${url}${fid}`,{},{
         headers: { Authorization: "Bearer " + `${user.accessToken}` },
       });
       setIsApprove(true);
@@ -35,7 +35,7 @@ const ContentCard = ({ license, name, fid, email , setIsApprove}) => {
             <p className="mt-3 text-sm text-gray-600">Fisherman ID: {fid}</p>
             <div className="mt-4">Email : {email}</div>
             <div className="mt-3 flex items-center space-x-2">
-              <Button onClick={GiveApprove}>Approve</Button>
+              <Button onClick={GiveApprove}>{action}</Button>
             </div>
           </div>
         </div>

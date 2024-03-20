@@ -28,25 +28,9 @@ const menuItems = [
   },
 ];
 
-const schema = z.object({
-  search: z.string(),
-});
-export function NavBar() {
-  const {
-    register,
-    handleSubmit,
-    
-  } = useForm({
-    resolver: zodResolver(schema),
-  });
 
-  const onSubmit = async (data) => {
-    try {
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export function NavBar() {
+  
   
   const { user } = useContext(AuthContext);
   
@@ -78,10 +62,7 @@ export function NavBar() {
             </ul>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Input {...register("search")} type="text" placeholder="Search" />
-            {/* <Button type="submit">Search</Button> */}
-          </form>
+         
 
           {user.role === "customer" && user.accessToken ? (
             <div className="flex flex-row gap-6">

@@ -1,5 +1,6 @@
 import CartContext from "@/context/CartContext";
 import { Cards } from "@/customComponents/Cards";
+import Footer from "@/customComponents/Footer";
 import { NavBar } from "@/customComponents/NavBar"
 import axios from "axios";
 import { useContext, useEffect, useState } from "react"
@@ -25,7 +26,7 @@ const Home = () => {
   return (
     <>
       <NavBar/>
-      <div className='m-10 flex flex-wrap justify-start gap-10 items-start '>
+      <div className='m-10 flex flex-wrap justify-start gap-10 items-start h-[100vh]'>
            {products?.map((item,index)=>(
               <Cards
                key={index}
@@ -41,7 +42,7 @@ const Home = () => {
            ))}
           
       </div>
-
+      <Footer/>
     </>
     
   )
