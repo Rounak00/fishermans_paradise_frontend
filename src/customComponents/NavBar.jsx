@@ -1,13 +1,10 @@
-import { useForm } from "react-hook-form";
-import LOGO from "../assets/Logo.svg";
-import { Link } from "react-router-dom";
-import { Input } from "@/components/ui/input";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { AuthContext } from "@/context/AuthContext";
+import { CartContext } from "@/context/CartContext";
 import { useContext } from "react";
-import AVATAR from "../assets/avatar.svg"
+import { Link } from "react-router-dom";
+import LOGO from "../assets/Logo.svg";
+import AVATAR from "../assets/avatar.svg";
 
 const menuItems = [
   {
@@ -28,16 +25,14 @@ const menuItems = [
   },
 ];
 
-
 export function NavBar() {
-  
-  
   const { user } = useContext(AuthContext);
-  
-  const Logout=()=>{
-    localStorage.removeItem("user")
-    location.reload()
-  }
+  const { cart } = useContext(CartContext);
+
+  const Logout = () => {
+    localStorage.removeItem("user");
+    location.reload();
+  };
   return (
     <>
       <div className="relative w-full bg-gray-300">
@@ -51,30 +46,37 @@ export function NavBar() {
             <ul className="ml-12 inline-flex space-x-8">
               {menuItems.map((item) => (
                 <li key={item.name}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="inline-flex font-bold  items-center text-gray-800 hover:text-gray-900"
                   >
-                    {item.name}
-                  </a>
+                    {item.name === "Cart" ? (
+                      <>
+                        {item.name}({cart && cart.length})
+                      </>
+                    ) : (
+                      <>{item.name}</>
+                    )}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-         
-
           {user.role === "customer" && user.accessToken ? (
             <div className="flex flex-row gap-6">
               <div className="flex flex-col">
-                 <div className="text-center">Hello,</div>
-                 <div className='font-bold flex flex-row gap-1'>
+                <div className="text-center">Hello,</div>
+                <div className="font-bold flex flex-row gap-1">
                   <span>
                     <img src={AVATAR} alt="AVATAR" className="h-7 w-7" />
                   </span>
-                  {user.name}</div>
-              </div> 
-              <Button className='bg-orange-700' onClick={Logout}>Log out</Button>
+                  {user.name}
+                </div>
+              </div>
+              <Button className="bg-orange-700" onClick={Logout}>
+                Log out
+              </Button>
             </div>
           ) : (
             <div className="hidden space-x-2 lg:block">
