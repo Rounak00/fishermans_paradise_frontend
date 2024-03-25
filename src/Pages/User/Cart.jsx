@@ -3,13 +3,36 @@ import { AuthContext } from "@/context/AuthContext";
 import { CartContext } from "@/context/CartContext";
 import Footer from "@/customComponents/Footer";
 import { NavBar } from "@/customComponents/NavBar";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DefaultImage from "../../assets/default.jpg";
+import { toast } from "@/components/ui/use-toast";
 
 const Cart = () => {
   const { user } = useContext(AuthContext);
   const { cart, dispatch } = useContext(CartContext);
+  const [total,setTotal]=useState(0);
+
+ 
+
+  useEffect(()=>{
+    Calculate();
+  },[cart])
+
+
+  const buyFunc = () => {
+    toast({
+      description: "Please Check your Email for payment and delivery schedule",
+    });
+  };
+
+  const Calculate=()=>{
+      let tot=0;
+      cart.map((item)=>{
+         tot=tot+item.price;
+      })
+      setTotal(tot);
+  }
   return (
     <>
       <NavBar />
@@ -41,13 +64,13 @@ const Cart = () => {
 
                           <dl className="mt-0.5 space-y-px text-sm text-gray-600">
                             <div>
-                              <dt className="inline">Unit:</dt>
-                              <dd className="inline">{item?.unit} KG</dd>
+                              <dt className="inline">Price: </dt>
+                              <dd className="inline">{`${item.price}/${item.weight} ${item.unit}`}</dd>
                             </div>
 
                             <div>
-                              <dt className="inline">Type:</dt>
-                              <dd className="inline">{item?.detail}</dd>
+                              <dt className="inline">Type: </dt>
+                              <dd className="inline">{item?.category}</dd>
                             </div>
                           </dl>
                         </div>
@@ -104,17 +127,17 @@ const Cart = () => {
                     <dl className="space-y-0.5 text-sm text-gray-700">
                       <div className="flex justify-between">
                         <dt>Subtotal</dt>
-                        <dd>₹250</dd>
+                        <dd>{total}</dd>
                       </div>
 
                       <div className="flex justify-between">
-                        <dt>VAT</dt>
+                        <dt>VAT and Delivery Charges</dt>
                         <dd>₹25</dd>
                       </div>
 
                       <div className="flex justify-between !text-base font-medium">
                         <dt>Total</dt>
-                        <dd>₹200</dd>
+                        <dd>{total+25}</dd>
                       </div>
                     </dl>
 
@@ -145,6 +168,7 @@ const Cart = () => {
                       <a
                         href="#"
                         className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
+                        onClick={buyFunc}
                       >
                         Checkout
                       </a>

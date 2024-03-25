@@ -34,7 +34,7 @@ export function Cards({ data }) {
         <p className="mt-3 text-sm text-gray-600">{data.detail}</p>
 
         {cart.includes(data) ? (
-          <Button
+          <Button 
             onClick={() =>
               dispatch({
                 type: "REMOVE_FROM_CART",
@@ -43,7 +43,7 @@ export function Cards({ data }) {
             }
             type="button"
             variant="destructive"
-            className="mt-4 mr-4 rounded-sm px-2.5 py-1 text-[12px] font-semibold text-white shadow-sm "
+            className="mt-4 mr-4 bg-orange-500 hover:bg-orange-700 rounded-sm px-2.5 py-1 text-[12px] font-semibold text-white shadow-sm "
           >
             Remove from Cart
           </Button>
