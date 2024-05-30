@@ -59,7 +59,7 @@ export function NavBar() {
                     )}
                   </Link>
                 </li>
-              ))}
+              ))} 
             </ul>
           </div>
 

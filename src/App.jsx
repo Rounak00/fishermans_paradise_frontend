@@ -22,10 +22,12 @@ import AdminApprove from "./Pages/Admin/AdminApprove"
 import AdminRemove from "./Pages/Admin/AdminRemove"
 
 
+
 const App = () => {
   
  
   return (
+   
      <BrowserRouter>
          <Routes>
             <Route path="/" element={<Home/>}/>
@@ -51,6 +53,9 @@ const App = () => {
 
          </Routes>
      </BrowserRouter>
+ 
+     
+  
   )
 }
 

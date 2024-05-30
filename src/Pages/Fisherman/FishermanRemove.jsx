@@ -56,7 +56,8 @@ const FishermanRemove = () => {
                   <p>No Items is added</p>
               </div>
              ):(
-              <div className='flex flex-col'>
+
+              <div className='flex flex-col mt-[30%]'>
                     
                      {items.length>0&&items.map((item,index)=>( 
                       <FRCards

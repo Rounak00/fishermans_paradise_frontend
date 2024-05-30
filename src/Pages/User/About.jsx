@@ -1,6 +1,6 @@
 import Footer from "@/customComponents/Footer";
 import { NavBar } from "@/customComponents/NavBar";
-
+import { Link } from "react-router-dom";
 const About = () => {
   return (
     <>
@@ -53,9 +53,9 @@ const About = () => {
                 </p>
               </li>
             </ul>
-            <button className="h-11 w-40 bg-orange-500 hover:bg-orange-800 ml-2 mt-5 text-white font-bold rounded-lg">
+            <Link to="/"><button className="h-11 w-40 bg-orange-500 hover:bg-orange-800 ml-2 mt-5 text-white font-bold rounded-lg">
               BUY PRODUCT
-            </button>
+            </button></Link>
           </div>
           <div className="h-auto w-full flex flex-col gap-8">
             <div className="flex  gap-2">

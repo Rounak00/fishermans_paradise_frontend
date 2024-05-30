@@ -23,12 +23,14 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <div className="m-10 flex flex-wrap justify-start gap-10 items-start h-[100vh]">
+      <section className="h-max">
+      <div className="m-10 flex flex-wrap justify-start gap-10 items-start h-auto">
         {products?.map((item, index) => (
           <Cards key={index} data={item} />
         ))}
       </div>
-      <Footer />
+      </section>
+      <Footer className=""/>
     </>
   );
 };

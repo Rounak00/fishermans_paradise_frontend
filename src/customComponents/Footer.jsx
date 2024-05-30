@@ -4,8 +4,8 @@ import LOGO from "../assets/Logo.svg";
 const Footer = () => {
   return (
     <>
-     
-    <div className="flex flex-col">
+    
+    <div className="flex flex-col " >
     <section className="relative overflow-hidden bg-white ">
       <div className=" container relative z-10  ">
         <div className=" flex flex-wrap items-center justify-between">
