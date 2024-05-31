@@ -32,7 +32,7 @@ export function Cards({ data }) {
           &#8377; {data.price}/{data.weight} {data.unit}
         </h4>
         
-        <p className="mt-3 text-sm text-gray-600 line-clamp-2">{`Category : ${data.detail}`}</p>
+        <p className="mt-3 text-sm text-gray-600 line-clamp-2">{`Category : ${data.category}`}</p>
        
         {cart.includes(data) ? (
           <Button 
