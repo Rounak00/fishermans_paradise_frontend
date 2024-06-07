@@ -9,4 +9,4 @@ Currently, two official plugins are available:
 
 Quick Glimpse of Fisherman's Paradise
 
-(./Preview/Fisheman's_paradise.jpg)
+<img src="./Preview/Fisheman's_Paradise.jpg" alt="Home Page">
