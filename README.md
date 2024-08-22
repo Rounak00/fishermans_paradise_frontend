@@ -55,10 +55,10 @@ Currently, two official plugins are available:
     <td>Admin Fisherman Revoke Page<img src="./ScreenShots/Admin_Revoke.png" alt="AdminRevokePage" /></td>
   </tr>
 <tr>
-    <td colspan="2">Fisherman Not Approved Functionality<img src="./ScreenShots/Fisherman_NotApproved.png" alt="Fisherman_NotApproved" /></td>
+    <td >Fisherman Not Approved Functionality<img src="./ScreenShots/Fisherman_NotApproved.png" alt="Fisherman_NotApproved" /></td>
     <td>Fisherman Add Product page<img src="./ScreenShots/Fisherman_AddProduct.png" alt="AddProductPage" /></td>
   </tr>
 <tr>
-    <td>Fisherman Remove Product Page<img src="./ScreenShots/Fisherman_RemoveProduct.png" alt="RemoveProductPage" /></td>
+    <td colspan="2">Fisherman Remove Product Page<img src="./ScreenShots/Fisherman_RemoveProduct.png" alt="RemoveProductPage" /></td>
   </tr>
  </table>
