@@ -31,7 +31,7 @@ Currently, two official plugins are available:
 
  <table>
   <tr>
-    <td>Home Page<img src="./ScreenShots/HomePage.png" alt="HomePage" /> </td>
+    <td>Home Page<img src="./ScreenShots/HomePage.png" alt="HomePage" width="200" /> </td>
     <td>Register or Login Type Page<img src="./ScreenShots/Reistration_Login_Type.png" alt="ReistrationLoginTypePage" /></td>
   </tr>
   <tr>
