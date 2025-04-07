@@ -62,3 +62,7 @@ Currently, two official plugins are available:
     <td colspan="2">Fisherman Remove Product Page<img src="./ScreenShots/Fisherman_RemoveProduct.png" alt="RemoveProductPage" /></td>
   </tr>
  </table>
+
+<br/>
+## Backend Repository
+> https://github.com/Rounak00/fishermans_paradise_backend
